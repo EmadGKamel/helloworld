@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    working_directory: .
+    docker:
+      - image: circleci/python:3.7
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache py-pip=9.0.0-r1
+            pip install docker-compose==1.15.0
+      - run:
+          name: Run tests
+          command: |
+            docker-compose up -d
+            docker-compose run dockerapp python test.py
+      - deploy:
+          name: Publish application to docker hub
+          command: |
+            docker login -e emadg.kamel@gmail.com -u emadkamel -p omda12!@E
+            docker tag dockerapp_dockerapp emadkamel/dockerapp:latest
+            docker push emadkamel/dockerapp:latest
