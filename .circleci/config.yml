@@ -24,6 +24,6 @@ jobs:
       - deploy:
           name: Publish application to docker hub
           command: |
-            docker login -e emadg.kamel@gmail.com -u emadkamel -p omda12!@E
+            docker login -u emadkamel -p omda12!@E
             docker tag dockerapp_dockerapp emadkamel/dockerapp:latest
             docker push emadkamel/dockerapp:latest
