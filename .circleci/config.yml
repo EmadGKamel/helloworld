@@ -26,6 +26,9 @@ jobs:
           command: |
             docker login -u emadkamel -p omda12!@E
             pwd
-            docker build -t emadkamel/helloworld ../Dockerfile
+            cd ~
+            ls
+            cd ./helloworld
+            docker build -t emadkamel/helloworld .
             #docker tag helloworld:latest emadkamel/helloworld:latest
             docker push emadkamel/helloworld:latest
