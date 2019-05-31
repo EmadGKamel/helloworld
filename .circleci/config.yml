@@ -25,5 +25,5 @@ jobs:
           name: Publish application to docker hub
           command: |
             docker login -u emadkamel -p omda12!@E
-            docker tag helloworld emadkamel/helloworld
+            docker tag helloworld:latest emadkamel/helloworld:latest
             docker push emadkamel/helloworld:latest
